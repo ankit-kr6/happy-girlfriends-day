@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Girlfriend Day, Bunny 🐰</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="hearts-field" id="hearts-field"></div>
+
+<main class="landing" id="landing">
+  <p class="eyebrow">A little something for</p>
+  <h1>Bunny 🐰</h1>
+  <p class="sub">Happy Girlfriend Day, Triya</p>
+
+  <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Open your surprise">
+    <div class="envelope">
+      <div class="env-body"></div>
+      <div class="env-heart">♥</div>
+      <div class="env-flap"></div>
+    </div>
+  </div>
+  <p class="open-hint">tap the envelope to open</p>
+</main>
+
+<script src="script.js"></script>
+<script>
+  const envelope = document.getElementById('envelope');
+  const landing = document.getElementById('landing');
+
+  function openEnvelope(){
+    envelope.classList.add('open');
+    landing.classList.add('fade-out');
+    setTimeout(() => { window.location.href = 'next.html'; }, 750);
+  }
+
+  envelope.addEventListener('click', openEnvelope);
+  envelope.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' ') openEnvelope();
+  });
+</script>
+</body>
+</html>
