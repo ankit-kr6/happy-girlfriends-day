@@ -154,23 +154,25 @@
   });
 
   /* ---- music toggle ---- */
-  const musicBtn = document.getElementById('music-toggle');
-  const music = document.getElementById('bg-music');
-  let playing = false;
-  musicBtn.addEventListener('click', () => {
-    if(!playing){
-      music.play().catch(() => {
-        alert('Apna gaana "song.mp3" assets folder mein daal do, phir yeh chalega 🎵');
-      });
-      musicBtn.classList.add('playing');
-      musicBtn.textContent = '❚❚';
+const musicBtn = document.getElementById("music-toggle");
+const music = document.getElementById("bg-music");
+
+musicBtn.addEventListener("click", async () => {
+  try {
+    if (music.paused) {
+      await music.play();
+      musicBtn.textContent = "❚❚";
+      musicBtn.classList.add("playing");
     } else {
       music.pause();
-      musicBtn.classList.remove('playing');
-      musicBtn.textContent = '♪';
+      musicBtn.textContent = "♪";
+      musicBtn.classList.remove("playing");
     }
-    playing = !playing;
-  });
+  } catch (err) {
+    console.error("Music Error:", err);
+    alert(err.message);
+  }
+});
 </script>
 </body>
 </html>
